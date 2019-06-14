@@ -1,0 +1,15 @@
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.FormMain.resources
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.Properties.Resources.resources
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.csproj.GenerateResource.cache
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.csproj.CoreCompileInputs.cache
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ToffLeadDev.exe.config
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ToffLeadDev.exe
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ToffLeadDev.pdb
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.exe
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.pdb
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\Newtonsoft.Json.dll
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\System.Net.Http.Formatting.dll
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\Newtonsoft.Json.xml
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\System.Net.Http.Formatting.xml
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.csproj.CopyComplete
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.csprojAssemblyReference.cache

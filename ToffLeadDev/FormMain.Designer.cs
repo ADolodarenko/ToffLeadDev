@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.labelURL = new System.Windows.Forms.Label();
             this.textBoxURL = new System.Windows.Forms.TextBox();
             this.buttonSend = new System.Windows.Forms.Button();
@@ -38,12 +39,17 @@
             this.labelAgentId = new System.Windows.Forms.Label();
             this.labelApiKey = new System.Windows.Forms.Label();
             this.labelApiSecret = new System.Windows.Forms.Label();
+            this.labelSourceFile = new System.Windows.Forms.Label();
+            this.textBoxSourceFile = new System.Windows.Forms.TextBox();
+            this.groupBoxControls = new System.Windows.Forms.GroupBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.groupBoxControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelURL
             // 
             this.labelURL.AutoSize = true;
-            this.labelURL.Location = new System.Drawing.Point(12, 17);
+            this.labelURL.Location = new System.Drawing.Point(10, 48);
             this.labelURL.Name = "labelURL";
             this.labelURL.Size = new System.Drawing.Size(29, 13);
             this.labelURL.TabIndex = 0;
@@ -51,55 +57,68 @@
             // 
             // textBoxURL
             // 
-            this.textBoxURL.Location = new System.Drawing.Point(71, 14);
+            this.textBoxURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxURL.Location = new System.Drawing.Point(69, 45);
             this.textBoxURL.Name = "textBoxURL";
-            this.textBoxURL.Size = new System.Drawing.Size(609, 20);
-            this.textBoxURL.TabIndex = 1;
+            this.textBoxURL.Size = new System.Drawing.Size(593, 20);
+            this.textBoxURL.TabIndex = 2;
             // 
             // buttonSend
             // 
-            this.buttonSend.Location = new System.Drawing.Point(686, 12);
+            this.buttonSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSend.Location = new System.Drawing.Point(668, 19);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(102, 101);
-            this.buttonSend.TabIndex = 2;
+            this.buttonSend.Size = new System.Drawing.Size(102, 125);
+            this.buttonSend.TabIndex = 6;
             this.buttonSend.Text = "Send";
             this.buttonSend.UseVisualStyleBackColor = true;
             this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
             // textBoxResponce
             // 
-            this.textBoxResponce.Location = new System.Drawing.Point(15, 143);
+            this.textBoxResponce.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxResponce.Location = new System.Drawing.Point(9, 175);
             this.textBoxResponce.Multiline = true;
             this.textBoxResponce.Name = "textBoxResponce";
-            this.textBoxResponce.Size = new System.Drawing.Size(773, 295);
+            this.textBoxResponce.Size = new System.Drawing.Size(779, 263);
             this.textBoxResponce.TabIndex = 3;
+            this.textBoxResponce.TabStop = false;
             // 
             // textBoxApiSecret
             // 
-            this.textBoxApiSecret.Location = new System.Drawing.Point(71, 93);
+            this.textBoxApiSecret.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxApiSecret.Location = new System.Drawing.Point(69, 124);
             this.textBoxApiSecret.Name = "textBoxApiSecret";
             this.textBoxApiSecret.PasswordChar = '*';
-            this.textBoxApiSecret.Size = new System.Drawing.Size(609, 20);
-            this.textBoxApiSecret.TabIndex = 4;
+            this.textBoxApiSecret.Size = new System.Drawing.Size(593, 20);
+            this.textBoxApiSecret.TabIndex = 5;
             // 
             // textBoxApiKey
             // 
-            this.textBoxApiKey.Location = new System.Drawing.Point(71, 67);
+            this.textBoxApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxApiKey.Location = new System.Drawing.Point(69, 98);
             this.textBoxApiKey.Name = "textBoxApiKey";
-            this.textBoxApiKey.Size = new System.Drawing.Size(609, 20);
+            this.textBoxApiKey.Size = new System.Drawing.Size(593, 20);
             this.textBoxApiKey.TabIndex = 4;
             // 
             // textBoxAgentId
             // 
-            this.textBoxAgentId.Location = new System.Drawing.Point(71, 41);
+            this.textBoxAgentId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAgentId.Location = new System.Drawing.Point(69, 72);
             this.textBoxAgentId.Name = "textBoxAgentId";
-            this.textBoxAgentId.Size = new System.Drawing.Size(609, 20);
-            this.textBoxAgentId.TabIndex = 4;
+            this.textBoxAgentId.Size = new System.Drawing.Size(593, 20);
+            this.textBoxAgentId.TabIndex = 3;
             // 
             // labelAgentId
             // 
             this.labelAgentId.AutoSize = true;
-            this.labelAgentId.Location = new System.Drawing.Point(12, 44);
+            this.labelAgentId.Location = new System.Drawing.Point(10, 75);
             this.labelAgentId.Name = "labelAgentId";
             this.labelAgentId.Size = new System.Drawing.Size(45, 13);
             this.labelAgentId.TabIndex = 0;
@@ -108,7 +127,7 @@
             // labelApiKey
             // 
             this.labelApiKey.AutoSize = true;
-            this.labelApiKey.Location = new System.Drawing.Point(12, 70);
+            this.labelApiKey.Location = new System.Drawing.Point(10, 101);
             this.labelApiKey.Name = "labelApiKey";
             this.labelApiKey.Size = new System.Drawing.Size(41, 13);
             this.labelApiKey.TabIndex = 0;
@@ -117,32 +136,74 @@
             // labelApiSecret
             // 
             this.labelApiSecret.AutoSize = true;
-            this.labelApiSecret.Location = new System.Drawing.Point(12, 96);
+            this.labelApiSecret.Location = new System.Drawing.Point(10, 127);
             this.labelApiSecret.Name = "labelApiSecret";
             this.labelApiSecret.Size = new System.Drawing.Size(53, 13);
             this.labelApiSecret.TabIndex = 0;
             this.labelApiSecret.Text = "api-secret";
+            // 
+            // labelSourceFile
+            // 
+            this.labelSourceFile.AutoSize = true;
+            this.labelSourceFile.Location = new System.Drawing.Point(10, 22);
+            this.labelSourceFile.Name = "labelSourceFile";
+            this.labelSourceFile.Size = new System.Drawing.Size(57, 13);
+            this.labelSourceFile.TabIndex = 5;
+            this.labelSourceFile.Text = "Source file";
+            // 
+            // textBoxSourceFile
+            // 
+            this.textBoxSourceFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSourceFile.Location = new System.Drawing.Point(69, 19);
+            this.textBoxSourceFile.Name = "textBoxSourceFile";
+            this.textBoxSourceFile.Size = new System.Drawing.Size(593, 20);
+            this.textBoxSourceFile.TabIndex = 1;
+            this.textBoxSourceFile.Resize += new System.EventHandler(this.textBoxSourceFile_Resize);
+            // 
+            // groupBoxControls
+            // 
+            this.groupBoxControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxControls.Controls.Add(this.buttonSend);
+            this.groupBoxControls.Controls.Add(this.textBoxSourceFile);
+            this.groupBoxControls.Controls.Add(this.labelURL);
+            this.groupBoxControls.Controls.Add(this.labelSourceFile);
+            this.groupBoxControls.Controls.Add(this.labelAgentId);
+            this.groupBoxControls.Controls.Add(this.textBoxAgentId);
+            this.groupBoxControls.Controls.Add(this.labelApiKey);
+            this.groupBoxControls.Controls.Add(this.textBoxApiKey);
+            this.groupBoxControls.Controls.Add(this.labelApiSecret);
+            this.groupBoxControls.Controls.Add(this.textBoxApiSecret);
+            this.groupBoxControls.Controls.Add(this.textBoxURL);
+            this.groupBoxControls.Location = new System.Drawing.Point(12, 6);
+            this.groupBoxControls.Name = "groupBoxControls";
+            this.groupBoxControls.Size = new System.Drawing.Size(776, 157);
+            this.groupBoxControls.TabIndex = 0;
+            this.groupBoxControls.TabStop = false;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "xls";
+            this.openFileDialog.Filter = "XLS files|*.xls|XLSX files|*.xlsx";
+            this.openFileDialog.InitialDirectory = ".";
+            this.openFileDialog.Title = "Select a source file";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBoxAgentId);
-            this.Controls.Add(this.textBoxApiKey);
-            this.Controls.Add(this.textBoxApiSecret);
+            this.Controls.Add(this.groupBoxControls);
             this.Controls.Add(this.textBoxResponce);
-            this.Controls.Add(this.buttonSend);
-            this.Controls.Add(this.textBoxURL);
-            this.Controls.Add(this.labelApiSecret);
-            this.Controls.Add(this.labelApiKey);
-            this.Controls.Add(this.labelAgentId);
-            this.Controls.Add(this.labelURL);
-            this.MaximizeBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Toff Lead Developer";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.groupBoxControls.ResumeLayout(false);
+            this.groupBoxControls.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,6 +221,10 @@
         private System.Windows.Forms.Label labelAgentId;
         private System.Windows.Forms.Label labelApiKey;
         private System.Windows.Forms.Label labelApiSecret;
+        private System.Windows.Forms.Label labelSourceFile;
+        private System.Windows.Forms.TextBox textBoxSourceFile;
+        private System.Windows.Forms.GroupBox groupBoxControls;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

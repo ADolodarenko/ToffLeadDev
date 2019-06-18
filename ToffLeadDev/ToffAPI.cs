@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToffLeadDev
 {
+    /*
+     * Класс с методами вызова API на сайте.
+     */
     public class ToffAPI
     {
         public const string DEFAULT_API_URL = "https://origination.tinkoff.ru/api/v1/public/partner/";
@@ -23,6 +23,9 @@ namespace ToffLeadDev
         private static string pApiKey;
         private static string pApiSecret;
 
+        /*
+         * Установка параметров подключения.
+         */
         public static void setAuthParams(string apiUrl, string agentId, string apiKey, string apiSecret)
         {
             pApiUrl = apiUrl;
@@ -31,6 +34,9 @@ namespace ToffLeadDev
             pApiSecret = apiSecret;
         }
         
+        /*
+         * Создание заявки на обслуживание.
+         */
         public static string createApplication(ToffLead lead)
         {
             string result = "";

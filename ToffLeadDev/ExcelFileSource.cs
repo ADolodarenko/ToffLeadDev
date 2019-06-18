@@ -1,14 +1,13 @@
 ﻿using ExcelDataReader;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToffLeadDev
 {
+    /*
+     * Источник данных в виде Excel-файла. Реализует интерфейс произвольного файлового источника данных.
+     */
     public class ExcelFileSource : IFileSource
     {
         private const string EXCEPT_FILE_NOT_EXISTS = "The source file doesn't exist.";
@@ -17,11 +16,17 @@ namespace ToffLeadDev
         private Stream fileStream;
         private IExcelDataReader fileReader;
 
+        /*
+         * Конструктор.
+         */
         public ExcelFileSource(string fileName)
         {
             this.fileName = fileName;
         }
 
+        /*
+         * Метод закрывает источник.
+         */
         public void Close()
         {
             if (fileReader != null)
@@ -37,6 +42,9 @@ namespace ToffLeadDev
             }
         }
 
+        /*
+         * Метод открывает источник.
+         */
         public void Open()
         {
             Close();
@@ -53,6 +61,9 @@ namespace ToffLeadDev
                 throw new Exception(EXCEPT_FILE_NOT_EXISTS);
         }
 
+        /*
+         * Метод получает следующую строку из источника в виде IDataRecord.
+         */
         public IDataRecord GetNextRecord()
         {
             if (fileReader.Read())

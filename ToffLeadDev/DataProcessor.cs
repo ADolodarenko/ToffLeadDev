@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading;
 
 namespace ToffLeadDev
 {
+    /*
+     * Процессор загрузки, преобразования и передачи данных на сайт. Ядро логики приложения.
+     */
     public class DataProcessor
     {
+        private const string PATTERN_MESSAGE = "INN={0} response: {1}";
+
         private IFileSource fileSource;
         private List<string> logLines;
-        
+
+        /*
+         * Конструктор.
+         */                
         public DataProcessor(string sourceFileName, string webURL, string webAgentId, string webApiKey, string webApiSecret)
         {
             logLines = new List<string>();
@@ -22,7 +27,19 @@ namespace ToffLeadDev
             ToffAPI.setAuthParams(webURL, webAgentId, webApiKey, webApiSecret);
         }
 
-        public List<string> Process()
+        /*
+         * Запуск процессора в отдельном потоке.
+         */
+        public void Start()
+        {
+            Thread thread = new Thread(new ThreadStart(Process));
+            thread.Start();
+        }
+
+        /*
+         * Собственно, запуск процессора.
+         */
+        public void Process()
         {
             if (fileSource != null)
             {
@@ -37,7 +54,7 @@ namespace ToffLeadDev
                         ToffLead lead = DataTransformer.MakeToffLead(dataRecord);
 
                         if (lead != null)
-                            logLines.Add(ToffAPI.createApplication(lead));
+                            logLines.Add(string.Format(PATTERN_MESSAGE, lead.innOrOgrn, ToffAPI.createApplication(lead)));
                     }
                     catch (Exception e)
                     {
@@ -47,7 +64,13 @@ namespace ToffLeadDev
                                 
                 fileSource.Close();
             }
+        }
 
+        /*
+         * Получение списка строк лога работы процессора.
+         */
+        public List<string> GetLogLines()
+        {
             return logLines;
         }
 

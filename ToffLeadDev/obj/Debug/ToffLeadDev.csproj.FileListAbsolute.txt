@@ -12,7 +12,6 @@ D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\System.Net.Ht
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\Newtonsoft.Json.xml
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\System.Net.Http.Formatting.xml
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.csproj.CopyComplete
-D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.csprojAssemblyReference.cache
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ExcelDataReader.dll
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ExcelDataReader.pdb
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ExcelDataReader.xml

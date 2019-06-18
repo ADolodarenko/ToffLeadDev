@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ToffLeadDev
 {
+    /*
+     * Главная форма приложения.
+     */
     public partial class FormMain : Form
     {
         Button pathButton;
@@ -28,6 +23,8 @@ namespace ToffLeadDev
 
         private void Init()
         {
+            SetMainTitle("Toff Lead Developer", true, false);
+
             InitSourceFileTextBox();
 
             FillTextBoxes();
@@ -67,31 +64,11 @@ namespace ToffLeadDev
                                                             textBoxURL.Text, textBoxAgentId.Text,
                                                             textBoxApiKey.Text, textBoxApiSecret.Text);
 
-            List<string> logLines = dataProcessor.Process();
+            dataProcessor.Process();
 
-            textBoxResponce.Lines = logLines.ToArray();
+            //dataProcessor.Start();
 
-
-            /*
-            ToffAPI.setAuthParams(textBoxURL.Text, textBoxAgentId.Text, textBoxApiKey.Text, textBoxApiSecret.Text);
-
-            ToffLead lead = new ToffLead();
-            lead.product = "РКО";
-            lead.source = "Локальные агенты";
-            lead.subsource = "API";
-            lead.firstName = "ВАЛЕРИЯ";
-            lead.middleName = "СЕРГЕЕВНА";
-            lead.lastName = "ЧЕКУНОВА";
-            lead.phoneNumber = "+79221747787";
-            lead.email = null;
-            lead.isHot = false;
-            lead.companyName = "ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"МЭД ГРУПП\"";
-            lead.innOrOgrn = "667011019699";
-            lead.comment = null;
-            lead.temperature = "COLD";
-
-            textBoxResponce.Text = ToffAPI.createApplication(lead);
-            */
+            textBoxResponce.Lines = dataProcessor.GetLogLines().ToArray();
         }
 
         private void textBoxSourceFile_Resize(object sender, EventArgs e)
@@ -107,6 +84,17 @@ namespace ToffLeadDev
 
             // Send EM_SETMARGINS to prevent text from disappearing underneath the button
             SendMessage(parentTextBox.Handle, 0xd3, (IntPtr)2, (IntPtr)(button.Width << 16));
+        }
+
+        private void SetMainTitle(string title, bool withVersion = false, bool withBuildDate = false)
+        {
+            this.Text = title;
+
+            if (withVersion)
+                this.Text += (" " + AppService.GetVersion());
+
+            if (withBuildDate)
+                this.Text += (" (" + AppService.GetBuildDate().ToString() + ")");
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

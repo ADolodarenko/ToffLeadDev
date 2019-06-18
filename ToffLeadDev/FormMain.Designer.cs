@@ -83,9 +83,11 @@
             this.textBoxResponce.Location = new System.Drawing.Point(9, 175);
             this.textBoxResponce.Multiline = true;
             this.textBoxResponce.Name = "textBoxResponce";
+            this.textBoxResponce.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxResponce.Size = new System.Drawing.Size(779, 263);
             this.textBoxResponce.TabIndex = 3;
             this.textBoxResponce.TabStop = false;
+            this.textBoxResponce.WordWrap = false;
             // 
             // textBoxApiSecret
             // 

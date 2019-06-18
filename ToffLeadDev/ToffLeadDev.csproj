@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Hopstarter-Soft-Scraps-Coin.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
@@ -55,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppService.cs" />
     <Compile Include="DataProcessor.cs" />
     <Compile Include="DataTransformer.cs" />
     <Compile Include="ExcelFileSource.cs" />
@@ -70,6 +74,7 @@
     <Compile Include="ToffAPI.cs" />
     <Compile Include="ToffHeaders.cs" />
     <Compile Include="ToffLead.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,7 +102,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Hopstarter-Soft-Scraps-Coin.ico" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\folder-icon.png" />
   </ItemGroup>

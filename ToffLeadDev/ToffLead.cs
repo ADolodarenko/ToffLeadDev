@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-
-namespace ToffLeadDev
+﻿namespace ToffLeadDev
 {
+    /*
+     * Класс для передачи сведений о лиде на сайт.
+     */
     public class ToffLead
     {
         public string product { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Text;
+using ToffLeadDev.Properties;
 
 namespace ToffLeadDev
 {
@@ -13,7 +14,9 @@ namespace ToffLeadDev
         private const string PATTERN_INN2 = @"^\s*[0-9]{12}\s*$";
         private const string PATTERN_INN3 = @"^\s*[0-9]{13}\s*$";
         private const string PATTERN_INN4 = @"^\s*[0-9]{15}\s*$";
-        private const string PATTERN_PHONE = @"^\s*((\+7)|8)?[0-9]{10}\s*$";
+
+        private const string PATTERN_PHONE = @"^[0-9]{10}$";  // ((\+7)|8) -> (8)
+        
         private const string PATTERN_LAST_NAME = @"^[A-Za-zА-Яа-яЁё ]((\ |\-)?[A-Za-zА-Яа-яЁё ]){0,49}$";
         private const string PATTERN_FIRST_NAME = @"^[A-Za-zА-Яа-яЁё ]((\ |\-)?[A-Za-zА-Яа-яЁё ]){0,49}$";
         private const string PATTERN_MIDDLE_NAME = @"^[A-Za-zА-Яа-яЁё ]((\ |\-)?[A-Za-zА-Яа-яЁё ]){0,49}$";
@@ -32,12 +35,6 @@ namespace ToffLeadDev
         private const string MESSAGE_WRONG_COMPANY_NAME = "Wrong company name";
         private const string MESSAGE_WRONG_EMAIL = "Wrong email";
 
-        private const string LEAD_PRODUCT = "РКО";
-        private const string LEAD_SOURCE = "Локальные агенты";
-        private const string LEAD_SUBSOURCE = "API";
-        private const string LEAD_TEMPERATURE = "COLD";
-        private const bool LEAD_ISHOT = false;
-
         private const int FIELD_INN_INDEX = 0;
         private const int FIELD_LAST_NAME_INDEX = 1;
         private const int FIELD_FIRST_NAME_INDEX = 2;
@@ -54,13 +51,17 @@ namespace ToffLeadDev
             StringBuilder exceptionStringBuilder = new StringBuilder();
 
             string inn = GetValue(dataRecord, FIELD_INN_INDEX, true, new string[] { PATTERN_INN1, PATTERN_INN2, PATTERN_INN3, PATTERN_INN4 }, exceptionStringBuilder, MESSAGE_WRONG_INN);
-            string phone = GetValue(dataRecord, FIELD_PHONE_INDEX, true, new string[] { PATTERN_PHONE }, exceptionStringBuilder, MESSAGE_WRONG_PHONE);
+
+            string phone = GetValue(dataRecord, FIELD_PHONE_INDEX, true, null, exceptionStringBuilder, MESSAGE_WRONG_PHONE); //Здесь шаблон не передаем. Контролируем телефон после нормализации.
+            if (phone != null)
+                phone = NormalizePhone(phone, true, new string[] { PATTERN_PHONE }, exceptionStringBuilder, MESSAGE_WRONG_PHONE);
+
             string lastName = GetValue(dataRecord, FIELD_LAST_NAME_INDEX, true, new string[] { PATTERN_LAST_NAME }, exceptionStringBuilder, MESSAGE_WRONG_LAST_NAME);
             string firstName = GetValue(dataRecord, FIELD_FIRST_NAME_INDEX, false, new string[] { PATTERN_FIRST_NAME }, exceptionStringBuilder, MESSAGE_WRONG_FIRST_NAME);
             string middleName = GetValue(dataRecord, FIELD_MIDDLE_NAME, false, new string[] { PATTERN_MIDDLE_NAME }, exceptionStringBuilder, MESSAGE_WRONG_MIDDLE_NAME);
             string companyName = GetValue(dataRecord, FIELD_COMPANY_NAME_INDEX, false, new string[] { PATTERN_COMPANY_NAME }, exceptionStringBuilder, MESSAGE_WRONG_COMPANY_NAME);
             string email = GetValue(dataRecord, FIELD_EMAIL_INDEX, false, new string[] { PATTERN_EMAIL }, exceptionStringBuilder, MESSAGE_WRONG_EMAIL);
-
+            
             if (exceptionStringBuilder.Length > 0)
             {
                 int endLength = MESSAGE_FIELD_DELIMITER.Length;
@@ -71,7 +72,6 @@ namespace ToffLeadDev
                 throw new Exception(exceptionStringBuilder.ToString());
             }
 
-            phone = NormalizePhone(phone);
             companyName = NormalizeCompanyName(companyName, lastName, firstName, middleName);
 
             return GetLead(inn, lastName, firstName, middleName, phone, companyName);
@@ -108,16 +108,28 @@ namespace ToffLeadDev
                 return value != null ? Utils.MatchesAny(value, patterns) : true;
         }
 
-        private static string NormalizePhone(string phone)
+        private static string NormalizePhone(string phone, bool isMandatory, string[] patterns, StringBuilder exceptionStringBuilder, string exceptionMessage)
         {
-            phone = phone.Trim();
+            string normalizedPhone = phone.Trim();
 
-            int length = phone.Length;
+            //char[] wrongChars = { '(', ')', '+', '#', '-', ' ', '.', ',' };
+            normalizedPhone = Utils.RemoveAllButDigits(normalizedPhone);
 
+            int length = normalizedPhone.Length;
             if (length > 10)
-                phone = phone.Substring(length - 10);
+                normalizedPhone = normalizedPhone.Substring(length - 10);
 
-            return "+7" + phone;
+            if (!IsCorrectValue(isMandatory, normalizedPhone, patterns))
+            {
+                Utils.AppendToBuilder(exceptionStringBuilder, exceptionMessage, MESSAGE_VALUE_DELIMITER);
+                Utils.AppendToBuilder(exceptionStringBuilder, phone, MESSAGE_FIELD_DELIMITER);
+            }
+
+            length = normalizedPhone.Length;
+            if (length == 10)
+                normalizedPhone = Settings.Default.PhonePrefix + normalizedPhone;
+            
+            return normalizedPhone;
         }
 
         private static string NormalizeCompanyName(string companyName, string lastName, string firstName, string middleName)
@@ -138,19 +150,19 @@ namespace ToffLeadDev
         {
             ToffLead lead = new ToffLead();
 
-            lead.product = LEAD_PRODUCT;
-            lead.source = LEAD_SOURCE;
-            lead.subsource = LEAD_SUBSOURCE;
+            lead.product = Settings.Default.LeadProduct;
+            lead.source = Settings.Default.LeadSource;
+            lead.subsource = Settings.Default.LeadSubsource;
             lead.firstName = firstName;
             lead.middleName = patronymic;
             lead.lastName = lastName;
             lead.phoneNumber = phone;
             lead.email = null;
-            lead.isHot = LEAD_ISHOT;
+            lead.isHot = Settings.Default.LeadIsHot;
             lead.companyName = companyName;
             lead.innOrOgrn = inn;
             lead.comment = null;
-            lead.temperature = LEAD_TEMPERATURE;
+            lead.temperature = Settings.Default.LeadTemperature;
 
             return lead;
         }

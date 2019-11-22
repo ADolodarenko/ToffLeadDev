@@ -43,6 +43,7 @@
             this.textBoxSourceFile = new System.Windows.Forms.TextBox();
             this.groupBoxControls = new System.Windows.Forms.GroupBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.buttonSettings = new System.Windows.Forms.Button();
             this.groupBoxControls.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             this.buttonSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSend.Location = new System.Drawing.Point(668, 19);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(102, 125);
+            this.buttonSend.Size = new System.Drawing.Size(102, 73);
             this.buttonSend.TabIndex = 6;
             this.buttonSend.Text = "Send";
             this.buttonSend.UseVisualStyleBackColor = true;
@@ -167,6 +168,7 @@
             // 
             this.groupBoxControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxControls.Controls.Add(this.buttonSettings);
             this.groupBoxControls.Controls.Add(this.buttonSend);
             this.groupBoxControls.Controls.Add(this.textBoxSourceFile);
             this.groupBoxControls.Controls.Add(this.labelURL);
@@ -190,6 +192,17 @@
             this.openFileDialog.Filter = "XLS files|*.xls|XLSX files|*.xlsx";
             this.openFileDialog.InitialDirectory = ".";
             this.openFileDialog.Title = "Select a source file";
+            // 
+            // buttonSettings
+            // 
+            this.buttonSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSettings.Location = new System.Drawing.Point(668, 98);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(102, 46);
+            this.buttonSettings.TabIndex = 7;
+            this.buttonSettings.Text = "Settings...";
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // FormMain
             // 
@@ -227,6 +240,7 @@
         private System.Windows.Forms.TextBox textBoxSourceFile;
         private System.Windows.Forms.GroupBox groupBoxControls;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button buttonSettings;
     }
 }
 

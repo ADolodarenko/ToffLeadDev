@@ -15,3 +15,4 @@ D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Release\ToffLeadDev
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Release\ToffLeadDev.csproj.CopyComplete
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Release\ToffLeadDev.exe
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Release\ToffLeadDev.pdb
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Release\ToffLeadDev.FormSettings.resources

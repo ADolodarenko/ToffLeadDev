@@ -15,3 +15,5 @@ D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.c
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ExcelDataReader.dll
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ExcelDataReader.pdb
 D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\bin\Debug\ExcelDataReader.xml
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.csprojAssemblyReference.cache
+D:\Work\Projects\CSharp\Learning\ToffLeadDev\ToffLeadDev\obj\Debug\ToffLeadDev.FormSettings.resources

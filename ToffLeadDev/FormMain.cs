@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using ToffLeadDev.Properties;
 
 namespace ToffLeadDev
 {
@@ -23,7 +24,7 @@ namespace ToffLeadDev
 
         private void Init()
         {
-            SetMainTitle("Toff Lead Developer", true, false);
+            SetMainTitle(Settings.Default.MainTitle, true, false);
 
             InitSourceFileTextBox();
 
@@ -36,20 +37,17 @@ namespace ToffLeadDev
             pathButton.Size = new Size(25, textBoxSourceFile.ClientSize.Height + 2);
             pathButton.Location = new Point(textBoxSourceFile.ClientSize.Width - pathButton.Width, -1);
             pathButton.Cursor = Cursors.Default;
-            pathButton.Image = Properties.Resources.OpenFolder;
+            pathButton.Image = Resources.OpenFolder;
             pathButton.Click += new EventHandler(pathButton_Click);
             textBoxSourceFile.Controls.Add(pathButton);
 
             // Send EM_SETMARGINS to prevent text from disappearing underneath the button
-            SendMessage(textBoxSourceFile.Handle, 0xd3, (IntPtr)2, (IntPtr)(pathButton.Width << 16));            
+            SendMessage(textBoxSourceFile.Handle, 0xd3, (IntPtr)2, (IntPtr)(pathButton.Width << 16));
         }
 
         private void FillTextBoxes()
         {
-            textBoxURL.Text = ToffAPI.DEFAULT_API_URL;
-            textBoxAgentId.Text = ToffAPI.DEFAULT_AGENT_ID;
-            textBoxApiKey.Text = ToffAPI.DEFAULT_API_KEY;
-            textBoxApiSecret.Text = ToffAPI.DEFAULT_API_SECRET;
+            textBoxURL.Text = Settings.Default.ApiUrl;
         }
 
         private void pathButton_Click(object sender, EventArgs e)
@@ -99,5 +97,20 @@ namespace ToffLeadDev
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            ShowSettings();
+        }
+
+        private void ShowSettings()
+        {
+            using (FormSettings formSettings = new FormSettings())
+            {
+                formSettings.ShowDialog(this);
+            }
+
+            SetMainTitle(Settings.Default.MainTitle, true, false);
+        }
     }
 }

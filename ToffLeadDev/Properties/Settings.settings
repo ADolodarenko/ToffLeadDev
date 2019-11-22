@@ -1,7 +1,30 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ToffLeadDev.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PhonePrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="LeadProduct" Type="System.String" Scope="User">
+      <Value Profile="(Default)">РКО</Value>
+    </Setting>
+    <Setting Name="LeadSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Локальные агенты</Value>
+    </Setting>
+    <Setting Name="LeadSubsource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">API</Value>
+    </Setting>
+    <Setting Name="LeadTemperature" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COLD</Value>
+    </Setting>
+    <Setting Name="LeadIsHot" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MainTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Toff Lead Developer</Value>
+    </Setting>
+    <Setting Name="ApiUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://origination.tinkoff.ru/api/v1/public/partner/</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
